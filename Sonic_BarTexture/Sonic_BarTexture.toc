@@ -1,0 +1,7 @@
+﻿## Interface: 40000
+## Title: Sonic BarTexture 4.0 Beta
+## Version: 4.0 Beta
+## Notes: 漂亮的状态条
+## Author: 小刺猬
+
+Sonic_BarTexture.lua
