@@ -1,0 +1,8 @@
+﻿## Interface: 40000
+## Title: Sonic Buffs 4.0 Beta
+## Notes: 精确显示自身Buff剩余时间，显示队友及宠物的Buff和Debuff
+## Version: 4.0 Beta
+## Author: 小刺猬
+
+SBuff_BuffTimer.lua
+SBuff_Buffs.lua
