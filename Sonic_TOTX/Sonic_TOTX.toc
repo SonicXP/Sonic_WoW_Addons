@@ -1,0 +1,8 @@
+## Interface: 40000
+## Title: Sonic TOTX 4.0 Beta
+## Notes: 显示目标的目标，目标的目标的目标
+## Author: 小刺猬
+## Version: 4.0 Beta
+## SavedVariables: STTX_Config
+
+Sonic_TOTX.xml

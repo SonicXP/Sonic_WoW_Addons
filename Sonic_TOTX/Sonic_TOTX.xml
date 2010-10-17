@@ -1,0 +1,193 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+
+    <Script file="Sonic_TOTX.lua"/>
+
+    <MessageFrame name="STTX_MessageFrame" insertMode="TOP" parent="UIParent" frameStrata="HIGH" toplevel="true" fadeDuration="0.5">
+        <Size>
+            <AbsDimension x="640" y="200"/>
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER">
+                <Offset>
+                    <AbsDimension x="0" y="0"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <FontString inherits="ZoneTextFont" virtual="true"/>
+    </MessageFrame>
+
+    <Frame name="STTX_Frame" parent="TargetFrame">
+        <Scripts>
+            <OnLoad function="Sonic_TOTX_OnLoad" />
+            <OnUpdate function="Sonic_TOTX_OnUpdate" />
+            <OnEvent function="Sonic_TOTX_OnEvent" />
+        </Scripts>
+    </Frame>
+
+    <Button name="Sonic_TTT_Frame" toplevel="true" frameStrata="HIGH" inherits="SecureUnitButtonTemplate" parent="TargetFrame" movable="true">
+
+        <Size>
+            <AbsDimension x="100" y="16"/>
+        </Size>
+
+        <Anchors>
+            <Anchor point="CENTER" relativeTo="UIParent" relativePoint="CENTER">
+                <Offset>
+                    <AbsDimension x="300" y="25"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+
+        <Layers>
+            <Layer level="ARTWORK">
+                <FontString name="Sonic_TTT_HealthText" inherits="TextStatusBarText">
+                    <Anchors>
+                        <Anchor point="CENTER">
+                            <Offset>
+                                <AbsDimension x="0" y="1"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+                <FontString name="Sonic_TTT_NameText" inherits="GameFontNormalSmall">
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="16"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+
+            <Layer level="OVERLAY">
+                <Texture name="Sonic_TTT_Flash" file="Interface\Addons\Sonic_TOTX\Bar" alphaMode="ADD">
+                    <Size>
+                        <AbsDimension x="100" y="20"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="3"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </Texture>
+            </Layer>
+        </Layers>
+
+        <Frames>
+
+            <StatusBar name="Sonic_TTT_StatusBar" drawLayer="BACKGROUND" frameStrata="LOW" minValue="0" maxValue="100" defaultValue="100" parent="Sonic_TTT_Frame">
+                <Size>
+                    <AbsDimension x="94" y="16"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeto="Sonic_TTT_Frame">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+                <BarColor r="0.4" g="0.8" b="0.0"/>
+            </StatusBar>
+
+        </Frames>
+
+        <Scripts>
+            <OnLoad>
+                SecureUnitButton_OnLoad(self, "targettargettarget");
+            </OnLoad>
+            <OnMouseUp function="Sonic_TOTX_OnDragStop" />
+            <OnMouseDown function="Sonic_TOTX_OnDragStart" />
+        </Scripts>
+    </Button>
+
+    <Button name="Sonic_TT_Frame" toplevel="true" frameStrata="HIGH" inherits="SecureUnitButtonTemplate" parent="TargetFrame" movable="true">
+
+        <Size>
+            <AbsDimension x="100" y="16"/>
+        </Size>
+
+        <Anchors>
+            <Anchor point="CENTER" relativeTo="UIParent" relativePoint="CENTER">
+                <Offset>
+                    <AbsDimension x="300" y="50"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+
+        <Layers>
+            <Layer level="ARTWORK">
+
+                <FontString name="Sonic_TT_HealthText" inherits="TextStatusBarText">
+                    <Anchors>
+                        <Anchor point="CENTER">
+                            <Offset>
+                                <AbsDimension x="0" y="1"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+
+                <FontString name="Sonic_TT_NameText" inherits="GameFontNormalSmall">
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="16"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+
+
+            </Layer>
+
+            <Layer level="OVERLAY">
+
+                <Texture name="Sonic_TT_Flash" file="Interface\Addons\Sonic_TOTX\Bar" alphaMode="ADD">
+                    <Size>
+                        <AbsDimension x="100" y="20"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="3"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </Texture>
+
+            </Layer>
+
+        </Layers>
+
+        <Frames>
+
+            <StatusBar name="Sonic_TT_StatusBar" drawLayer="BACKGROUND" frameStrata="LOW" minValue="0" maxValue="100" defaultValue="100" parent="Sonic_TT_Frame">
+                <Size>
+                    <AbsDimension x="94" y="16"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeto="Sonic_TT_Frame">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+                <BarColor r="0.0" g="0.8" b="0.0"/>
+            </StatusBar>
+
+        </Frames>
+
+        <Scripts>
+            <OnLoad>
+                SecureUnitButton_OnLoad(self, "targettarget");
+            </OnLoad>
+            <OnMouseUp function="Sonic_TOTX_OnDragStop" />
+            <OnMouseDown function="Sonic_TOTX_OnDragStart" />
+        </Scripts>
+    </Button>
+</Ui>
