@@ -1,0 +1,35 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+    <Script file="Sonic_TargetX.lua" />
+
+    <Frame name="Sonic_TargetXFrame" parent="UIParent">
+        <Layers>
+            <Layer level="ARTWORK">
+                <FontString name="Sonic_TargetHPP" inherits="NumberFontNormalSmall" parent="TargetFrame">
+                    <Anchors>
+                        <Anchor point="RIGHT" relativeTo="TargetFrameHealthBar" relativePoint="LEFT">
+                            <Offset>
+                                <AbsDimension x="-5" y="1"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+
+                <FontString name="Sonic_TargetMPP" inherits="NumberFontNormalSmall" parent="TargetFrame">
+                    <Anchors>
+                        <Anchor point="RIGHT" relativeTo="TargetFrameManaBar" relativePoint="LEFT">
+                            <Offset>
+                                <AbsDimension x="-5" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+
+        <Scripts>
+            <OnLoad function="Sonic_TargetX_OnLoad" />
+            <OnEvent function="Sonic_TargetX_OnEvent" />
+        </Scripts>
+    </Frame>
+</Ui>

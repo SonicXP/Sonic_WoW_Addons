@@ -1,0 +1,7 @@
+﻿## Interface: 40000
+## Title: Sonic TargetX 4.0 Beta
+## Version: 4.0 Beta
+## Notes: 目标头像信息增强
+## Author: 小刺猬
+
+Sonic_TargetX.xml
