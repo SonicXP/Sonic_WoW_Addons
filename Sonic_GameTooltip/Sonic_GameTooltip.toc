@@ -1,0 +1,7 @@
+## Interface: 40000
+## Title: Sonic GameTooltip 4.0 Beta
+## Version: 4.0 Beta
+## Notes: 提示信息跟随鼠标
+## Author: 小刺猬
+
+Sonic_GameTooltip.lua
