@@ -1,13 +1,9 @@
-﻿SBuff_Version = "4.0 Beta";
+﻿SBuff_Version = "4.0 Beta2";
 
 local SBuff_MAX_PARTY_BUFFS = 12;
 local SBuff_MAX_PARTY_DEBUFFS = 8;
 local SBuff_MAX_PET_BUFFS = 8;
 local SBuff_MAX_PET_DEBUFFS = 8;
-
--- change system original variables
-MAX_PARTY_BUFFS = SBuff_MAX_PARTY_BUFFS;
-MAX_PARTY_DEBUFFS = SBuff_MAX_PARTY_DEBUFFS;
 
 local function CreatePartyBuffs()
     local i;
@@ -84,19 +80,20 @@ PartyMemberBuffTooltip_Update = function(self)
     return;
 end
 
---Hook RefreshDebuffs func
-local old_RefreshDebuffs = RefreshDebuffs;
-RefreshDebuffs = function(frame, unit, numDebuffs, suffix, checkCVar)
-    local name = frame:GetName();
-    numDebuffs = numDebuffs or 4;
+local is_refresh_hook_func_working = false;
+hooksecurefunc("RefreshDebuffs", function(frame, unit, numDebuffs, suffix, checkCVar)
+    if (is_refresh_hook_func_working) then
+        return;
+    end;
 
+    is_refresh_hook_func_working = true;
+    local name = frame:GetName();
     if string.find(name, "^PartyMemberFrame%d$") then
-        old_RefreshDebuffs(frame, unit, SBuff_MAX_PARTY_DEBUFFS);
+        RefreshDebuffs(frame, unit, SBuff_MAX_PARTY_DEBUFFS);
         RefreshBuffs(frame, unit, SBuff_MAX_PARTY_BUFFS);
     elseif (name == "PetFrame") then
-        old_RefreshDebuffs(frame, unit, SBuff_MAX_PET_DEBUFFS);
+        RefreshDebuffs(frame, unit, SBuff_MAX_PET_DEBUFFS);
         RefreshBuffs(frame, unit, SBuff_MAX_PET_BUFFS);
-    else
-        old_RefreshDebuffs(frame, unit, numDebuffs, suffix, checkCVar);
     end;
-end
+    is_refresh_hook_func_working = false;
+end)
