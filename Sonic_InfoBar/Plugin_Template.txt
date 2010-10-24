@@ -1,0 +1,55 @@
+To create a new plugin:
+
+local sampleFrame = {};
+
+sampleFrame.id = "Sample";  --necessary ( id is unique, identifier of this plugin, this field CANNOT be "Base" )
+sampleFrame.ftype = "Frame";  --necessary ( frame type, you can choose "Frame", "Button", etc )
+sampleFrame.name = "SamplePlugin";  --necessary ( name of this plugin )
+sampleFrame.icon = "icon path";  -- ( icon of this plugin )
+sampleFrame.text = "Text on the screen";  -- ( just change this field by other methods to change the text show on the screen )
+sampleFrame.event = {
+    "PLAYER_ENTERING_WORLD",
+};  -- ( the event of this plugin needed )
+sampleFrame.onxx = {
+    OnEvent = function(self, event, ...) end,
+};  -- ( all OnXX events the "ftype" supported such as "OnEvent", "OnEnter", "OnLeave", etc )
+sampleFrame.update = function() end;  -- ( if this plugin need "OnUpdate", just write here, update rate is set by "SIB_Config.Base.UpdateRate", default 1s )
+sampleFrame.svload = function() end;  -- ( when the "VARIABLES_LOADED" event fired, this method is called. you can also use "event VARIABLES_LOADED" + "onxx OnEvent" to do the same )
+sampleFrame.panel = APanelFrame;  -- ( if this plugin need a config panel, just draw this "APanelFrame" )
+sampleFrame.config = {
+};  -- ( this is the default config of this plugin, to get the user's config, use "SIB_Config[id]" table )
+
+SIB:New(sampleFrame);  -- ( this method will build the plugin and show on user's screen )
+
+
+This is an example:
+
+local xxxxx=0;
+local frame = {};
+
+frame.id = "Sample";
+frame.ftype = "Frame";
+frame.name = "Timer";
+frame.icon = "Interface\\Addons\\Sonic_InfoBar\\Texture\\Timer";
+frame.text = "0";
+frame.event = {
+    "PLAYER_ENTERING_WORLD",
+};
+frame.onxx = {
+    OnEvent = function(self, event, ...)
+        ChatFrame1:AddMessage("sample event");
+        frame.text = self:GetName() .. " " .. event;
+    end,
+};
+frame.update = function()
+    xxxxx = xxxxx + 1;
+    frame.text = xxxxx;
+end;
+frame.svload = function()
+    ChatFrame1:AddMessage("sample saved variables loaded");
+end;
+frame.panel = APanelFrame;
+frame.config = {
+};
+
+SIB:New(frame);

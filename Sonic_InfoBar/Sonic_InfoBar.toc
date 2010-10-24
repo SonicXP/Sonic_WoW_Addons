@@ -1,0 +1,30 @@
+## Interface: 40000
+## Title: Sonic InfoBar 4.0 Beta
+## Notes: Infomation platform with tiny memory cost
+## Notes-zhCN: 信息平台
+## Notes-zhTW: 資訊平臺
+## Version: 4.0 Beta
+## Author: 小刺猬
+## SavedVariables: SIB_Config, SIB_FramePos
+
+SIB_Locale.lua
+SIB_Locale_zhCN.lua
+SIB_Locale_zhTW.lua
+
+SIB_Base.lua
+SIB_Base_Config.lua
+
+SIB_Background.lua
+SIB_Font.lua
+
+SIB_FPS.lua
+SIB_Lag.lua
+SIB_Clock.lua
+SIB_Time.lua
+SIB_UIMemory.lua
+SIB_Money.lua
+SIB_Loot.lua
+SIB_Bag.lua
+SIB_ItemMonitor.lua
+SIB_Durability.lua
+SIB_Coord.lua
