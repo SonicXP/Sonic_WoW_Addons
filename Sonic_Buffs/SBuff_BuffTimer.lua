@@ -1,5 +1,5 @@
 ﻿-- show timer as xx:yy format
-SecondsToTimeAbbrev = function(seconds)
+local SecondsToTimeAbbrev = function(seconds)
     local m,s;
     if ( seconds > 6000 ) then
         m = floor(seconds / 60);
@@ -20,6 +20,13 @@ SecondsToTimeAbbrev = function(seconds)
     end
     return "N/A";
 end;
+
+hooksecurefunc("AuraButton_UpdateDuration", function(auraButton, timeLeft)
+	local duration = auraButton.duration;
+	if ( SHOW_BUFF_DURATIONS == "1" and timeLeft ) then
+		duration:SetFormattedText(SecondsToTimeAbbrev(timeLeft));
+	end
+end);
 
 -- change buff timer font
 local fontPath = "Fonts\\ARIALN.TTF";

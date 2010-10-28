@@ -1,4 +1,4 @@
-﻿SBuff_Version = "4.0 Beta2";
+﻿SBuff_Version = "4.0 Beta3";
 
 local SBuff_MAX_PARTY_BUFFS = 12;
 local SBuff_MAX_PARTY_DEBUFFS = 8;
@@ -61,7 +61,11 @@ local function CreatePetBuffs()
     --Debuff
     PetFrameDebuff1:ClearAllPoints();
     --PetFrameDebuff1:SetPoint("LEFT", "PetFrame", "RIGHT", -7, -5);
-    PetFrameDebuff1:SetPoint("TOP", "PetFrameBuff1", "BOTTOM", 0, -2);
+    if (PetFrameBuff1 and type(PetFrameBuff1)=="table") then
+        PetFrameDebuff1:SetPoint("TOP", "PetFrameBuff1", "BOTTOM", 0, -2);
+    else
+        PetFrameDebuff1:SetPoint("TOPLEFT", "PetFrame", "TOPLEFT", 48, -42);
+    end
     for j = 5, SBuff_MAX_PET_DEBUFFS, 1 do
         buff = CreateFrame("Button", "PetFrameDebuff"..j, PetFrame, "PartyDebuffFrameTemplate");
         buff:SetID(j);
