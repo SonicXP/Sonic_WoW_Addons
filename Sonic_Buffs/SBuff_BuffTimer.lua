@@ -1,4 +1,9 @@
-﻿-- show timer as xx:yy format
+﻿BUFFS_PER_ROW = 8;
+local MAX_BUFFS = 32;
+local MAX_DEBUFFS = 16;
+local MAX_ENCHANTS = 2;
+
+-- show timer as xx:yy format
 local SecondsToTimeAbbrev = function(seconds)
     local m,s;
     if ( seconds > 6000 ) then
@@ -22,10 +27,16 @@ local SecondsToTimeAbbrev = function(seconds)
 end;
 
 hooksecurefunc("AuraButton_UpdateDuration", function(auraButton, timeLeft)
-	local duration = auraButton.duration;
-	if ( SHOW_BUFF_DURATIONS == "1" and timeLeft ) then
-		duration:SetFormattedText(SecondsToTimeAbbrev(timeLeft));
-	end
+    local duration = auraButton.duration;
+    if (duration == nil) then
+        duration = getglobal(auraButton:GetName() .. "Duration");
+        if (duration == nil) then
+            return;
+        end
+    end
+    if (SHOW_BUFF_DURATIONS == "1" and timeLeft) then
+        duration:SetFormattedText(SecondsToTimeAbbrev(timeLeft));
+    end
 end);
 
 -- change buff timer font
@@ -51,21 +62,21 @@ local SBuff_SetBuffFont = function(self, event, ...)
     local i;
     local tmpDur;
     --BUFF
-    for i=1,32,1 do
+    for i=1, MAX_BUFFS, 1 do
         tmpDur = getglobal("BuffButton"..i.."Duration");
         if tmpDur then
             tmpDur:SetFont(fontPath, fontSize, fontOutline);
         end;
     end;
     --DEBUFF
-    for i=1,16,1 do
+    for i=1, MAX_DEBUFFS, 1 do
         tmpDur = getglobal("DebuffButton"..i.."Duration");
         if tmpDur then
             tmpDur:SetFont(fontPath, fontSize, fontOutline);
         end;
     end;
     --ENCHANT
-    for i=1,2,1 do
+    for i=1, MAX_ENCHANTS, 1 do
         tmpDur = getglobal("TempEnchant"..i.."Duration");
         if tmpDur then
             tmpDur:SetFont(fontPath, fontSize, fontOutline);

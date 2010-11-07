@@ -1,4 +1,4 @@
-﻿SBuff_Version = "4.0 Beta3";
+﻿SBuff_Version = "4.0 Beta4";
 
 local SBuff_MAX_PARTY_BUFFS = 12;
 local SBuff_MAX_PARTY_DEBUFFS = 8;
