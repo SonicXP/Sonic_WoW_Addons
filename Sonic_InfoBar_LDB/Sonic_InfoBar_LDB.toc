@@ -1,0 +1,14 @@
+## Interface: 40000
+## Title: Sonic InfoBar LDB Display 4.0
+## Notes:  使 Sonic InfoBar 支持 LDB 插件
+## Version: 4.0
+## Author: 小刺猬
+## RequiredDeps: Sonic_InfoBar
+## SavedVariables: SIB_LDB_Config
+
+LDB\LibStub.lua
+LDB\CallbackHandler-1.0.lua
+LDB\LibDataBroker-1.1.lua
+
+SIB_LDB.lua
+SIB_LDB_Config.lua
