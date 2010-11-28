@@ -41,7 +41,7 @@ end);
 
 -- change buff timer font
 local fontPath = "Fonts\\ARIALN.TTF";
-local fontSize = 12;
+local fontSize = 13;
 local fontOutline = "OUTLINE";
 
 local timer_font_frame = CreateFrame("Frame", "SBuff_BuffTimerFrame", UIParent);
