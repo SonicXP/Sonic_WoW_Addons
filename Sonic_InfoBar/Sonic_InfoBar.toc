@@ -1,9 +1,9 @@
 ## Interface: 40000
-## Title: Sonic InfoBar 4.0 Beta
+## Title: Sonic InfoBar 4.0 Beta2
 ## Notes: Infomation platform with tiny memory cost
 ## Notes-zhCN: 信息平台
 ## Notes-zhTW: 資訊平臺
-## Version: 4.0 Beta
+## Version: 4.0 Beta2
 ## Author: 小刺猬
 ## SavedVariables: SIB_Config, SIB_FramePos
 

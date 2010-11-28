@@ -94,7 +94,7 @@ end]]
 -- currency functions
 local function currencyUpdate()
     currencyCount = {};
-    local currencyID = {395, 392, 390, 81, 241};
+    local currencyID = {395, 392, 390, 81, 402, 61, 241};
     for i=1, #currencyID do
         local name, count, icon = GetCurrencyInfo(currencyID[i]);
         if (name and name~="") then
