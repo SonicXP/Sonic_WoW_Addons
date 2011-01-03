@@ -3,7 +3,6 @@ local L = _G["SIB_Locale"];
 local C = _G["SIB_Color"];
 
 local todayKill, todayHonor, totalKill = 0, 0, 0;
---local pointsArena = {};
 local currencyCount = {};
 
 -- item functions
@@ -47,54 +46,10 @@ local function pvpUpdate()
     totalKill = GetPVPLifetimeStats();
 end
 
--- arena functions
---[[function SIB_ToPoints(rating, size)
-    rating = tonumber(rating) or 0;
-    local points;
-    if rating <= 1500 then
-        points = 0.22 * rating + 14;
-    else
-        points =  1511.26 / ( 1 + 1639.28 * 2.71828 ^ (-0.00412 * rating) );
-    end
-    if size == 5 then
-        return floor(points);
-    elseif size == 3 then
-        return floor(points*0.88);
-    elseif size == 2 then
-        return floor(points*0.76);
-    else
-        return 0;
-    end;
-end
-
-local function arenaUpdate()
-    for i = 1, 3 do
-        local teamSize, teamRating, teamName, weekPlayed, points;
-        if not (pointsArena[i]) then
-            pointsArena[i] = {size = 0, pts = 0};
-        end;
-        teamName, teamSize, teamRating, weekPlayed = GetArenaTeam(i);
-        if teamSize == 2 then
-            pointsArena[i].size = "2v2";
-        elseif teamSize == 3 then
-            pointsArena[i].size = "3v3";
-        elseif teamSize == 5 then
-            pointsArena[i].size = "5v5";
-        end;
-        if teamName == nil then
-            pointsArena[i] = nil;
-        elseif weekPlayed < 10 then
-            pointsArena[i].pts = 0;
-        else
-            pointsArena[i].pts = SIB_ToPoints(teamRating, teamSize);
-        end;
-    end
-end]]
-
 -- currency functions
 local function currencyUpdate()
     currencyCount = {};
-    local currencyID = {395, 392, 390, 81, 402, 61, 241};
+    local currencyID = {395, 396, 392, 390, 81, 402, 61, 361, 241, 391, 384, 385, 393, 394, 397, 398, 399, 400, 401};
     for i=1, #currencyID do
         local name, count, icon = GetCurrencyInfo(currencyID[i]);
         if (name and name~="") then
@@ -112,14 +67,6 @@ local function Tooltip(self)
     GameTooltip:AddDoubleLine(C.gold..L.imtodaykill..C.endc, C.white..todayKill..C.endc);
     GameTooltip:AddDoubleLine(C.gold..L.imtodayhonor..C.endc, C.white..todayHonor..C.endc);
     GameTooltip:AddDoubleLine(C.gold..L.imtotalkill..C.endc, C.white..totalKill..C.endc);
-
-    --[[GameTooltip:AddLine(" ");
-    GameTooltip:AddLine(C.green.."----- "..L.imarena.." -----"..C.endc);
-    for i = 1, 3 do
-        if (pointsArena[i] ~= nil) then
-            GameTooltip:AddDoubleLine(C.gold..pointsArena[i].size..C.endc, C.white..pointsArena[i].pts..C.endc);
-        end;
-    end]]
 
     GameTooltip:AddLine(" ");
     GameTooltip:AddLine(C.green.."----- "..L.imcurrency.." -----"..C.endc);
@@ -253,9 +200,6 @@ frame.event = {
     --battleground
     "PLAYER_PVP_KILLS_CHANGED",
     "PLAYER_PVP_RANK_CHANGED",
-    --arena
-    --[["ARENA_TEAM_UPDATE",
-    "ARENA_TEAM_ROSTER_UPDATE",]]
     --currency
     "CURRENCY_DISPLAY_UPDATE",
 };
@@ -265,14 +209,11 @@ frame.onxx = {
             itemUpdate();
         elseif ((event == "PLAYER_PVP_KILLS_CHANGED") or (event == "PLAYER_PVP_RANK_CHANGED")) then
             pvpUpdate();
-        --[[elseif ((event == "ARENA_TEAM_UPDATE") or (event == "ARENA_TEAM_ROSTER_UPDATE")) then
-            arenaUpdate();]]
         elseif (event == "CURRENCY_DISPLAY_UPDATE") then
             currencyUpdate();
         else
             itemUpdate();
             pvpUpdate();
-            --arenaUpdate();
             currencyUpdate();
         end;
 
